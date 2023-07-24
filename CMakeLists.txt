@@ -13,5 +13,10 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 find_package(Poco REQUIRED COMPONENTS Foundation Net)
 
 
-project(http_include)
-add_executable(http_mod ${CMAKE_CURRENT_SOURCE_DIR}/include/common/http_mod.cpp)
+project(messageSendReceiveProject)
+
+add_executable(http_transmit ${CMAKE_CURRENT_SOURCE_DIR}/unix/transmitter/main.cpp)
+target_link_libraries(http_transmit Poco::Foundation Poco::Net)
+
+add_executable(http_receive ${CMAKE_CURRENT_SOURCE_DIR}/unix/receiver/main.cpp)
+target_link_libraries(http_receive Poco::Foundation Poco::Net)
