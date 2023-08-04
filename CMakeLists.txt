@@ -10,7 +10,8 @@ include_directories("/home/owos/vcpkg/installed/x64-linux/include")
 
 # header files & packages
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
-find_package(Poco REQUIRED COMPONENTS Foundation Net)
+find_package(Poco REQUIRED COMPONENTS Foundation Net REQUIRED)
+find_package(Boost REQUIRED)
 
 
 project(messageSendReceiveProject)

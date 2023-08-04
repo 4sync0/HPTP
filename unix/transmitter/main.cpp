@@ -5,11 +5,11 @@
 
 using std::string;
 
-Poco::URI uri("http://www.google.com");
+Poco::URI uri("http://localhost:631");
 
 int main() {
-    httpPing::preNpost receiver(uri);
-    receiver.receive();
+    httpPing::preNpost transmitter(uri);
+    transmitter.transmit(true);
 
     return 0;
 }

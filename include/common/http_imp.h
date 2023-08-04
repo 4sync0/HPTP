@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: BSL-1.0
+
 #include <Poco/URI.h>
 #include <Poco/Net/HTTPClientSession.h>
 #include <Poco/Net/HTTPRequest.h>
