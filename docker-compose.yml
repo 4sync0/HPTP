@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  make:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+        - binaries:$HOME/HPTP/bin
+        - cmake-cache:$HOME/HPTP/build
+
+volumes:
+  binaries:
+    driver: local
+  cmake-cache:
+    driver: local
