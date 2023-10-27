@@ -7,6 +7,7 @@ DEFAULT=$(tput sgr0)
 root_dir="${HOME}/HPTP"
 cd $root_dir
 
+ARCH=$(find ~/vcpkg/installed/ -type d -name '*linux')
 OS=$(head -n 3 /etc/os-release | grep -oP '(?<=ID=)\S+') # regex ;~;
 
 function task() {
@@ -27,7 +28,7 @@ function task() {
 
 function compile() {
     cd build/
-    cmake -B $HOME/vcpkg/installed/x64-linux -S ../ -DCMAKE_TOOLCHAIN_FILE=$HOME/vcpkg/scripts/buildsystems/vcpkg.cmake
+    cmake -B ~/vcpkg/installed/${ARCH} -S ../ -DCMAKE_TOOLCHAIN_FILE=~/vcpkg/scripts/buildsystems/vcpkg.cmake
     make
 
     echo "${YELLOW}Succesfully compiled HPTP. Exitting bootstrap ${DEFAULT}"

@@ -9,9 +9,10 @@
 
 #include <iostream>
 #include <string>
-using std::string;
 
 #pragma once
+
+using std::string;
 
 
 namespace httpPing {
