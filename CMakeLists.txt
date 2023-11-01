@@ -4,7 +4,7 @@ project(hptp_cpp)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
-include(${HOME}/vcpkg/scripts/buildsystems/vcpkg.cmake)
+include(~/vcpkg/scripts/buildsystems/vcpkg.cmake)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 find_package(Poco REQUIRED Foundation Net)

@@ -1,23 +1,30 @@
 #!/bin/bash
 
-MAGENTA=$(tput setaf 5)
-YELLOW=$(tput setaf 3)
-DEFAULT=$(tput sgr0)
+MAGENTA="$(tput setaf 5)"
+YELLOW="$(tput setaf 3)"
+DEFAULT="$(tput sgr0)"
+
+
+# if dockerfile found change dir during script timelapse
+if [ "$HOME" = "/root" ]; then
+    HOME=""
+    trap "HOME=/root" EXIT
+fi
+
 
 root_dir="${HOME}/HPTP"
 cd $root_dir
 
-ARCH=$(find ~/vcpkg/installed/ -type d -name '*linux')
-OS=$(head -n 3 /etc/os-release | grep -oP '(?<=ID=)\S+') # regex ;~;
+OS="$(head -n 3 /etc/os-release | grep -oP '(?<=ID=)\S+')" # regex ;~;
 
 function task() {
 
     read -p "${MAGENTA}${1}    ${DEFAULT}" option
 
-    if [ $option == "N" ] || [ $option == "n" ]
+    if [ "$option" == "N" ] || [ "$option" == "n" ]
     then
         exit 0
-    elif [ $option == "Y" ] || [ $option == "y" ]
+    elif [ "$option" == "Y" ] || [ "$option" == "y" ]
     then
         echo -e "${YELLOW}${2}${DEFAULT}"
     else
@@ -28,7 +35,7 @@ function task() {
 
 function compile() {
     cd build/
-    cmake -B ~/vcpkg/installed/${ARCH} -S ../ -DCMAKE_TOOLCHAIN_FILE=~/vcpkg/scripts/buildsystems/vcpkg.cmake
+    cmake -B ${HOME}/HPTP/build/ -S ${HOME}/HPTP/
     make
 
     echo "${YELLOW}Succesfully compiled HPTP. Exitting bootstrap ${DEFAULT}"
@@ -51,7 +58,7 @@ function vcpkgInstall() {
 
 
 function dependencies() {
-    if [[ $OS == ${1} ]]
+    if [[ "$OS" == ${1} ]]
     then
         $2 git
         $2 gcc

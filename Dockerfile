@@ -11,7 +11,6 @@ ENV VCPKG_ROOT=/vcpkg
 
 COPY . /HPTP
 
-#WORKDIR /HPTP
 
 ENV TERM=xterm-256color
 CMD [ "/HPTP/unix/bootstrap.sh" ]
