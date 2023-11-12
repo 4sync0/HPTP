@@ -32,7 +32,7 @@ namespace udp {
         if (ec)
             std::cerr << "unsuccessful operation    " << ec.message() << "\n";
         else
-            std::cout << "successful operation  \n" << "";
+            std::cout << "successful operation\n";
     }
 
     void send(std::array<uint8_t, 256> message, int size) {
@@ -49,7 +49,7 @@ namespace udp {
 
     void receive() {
         asio::ip::udp::socket socket_r(io_context, asio::ip::udp::endpoint(asio::ip::udp::v4(), port_def));
-        char data[50];
+        std::vector<uint8_t> data;
         
         asio::ip::udp::endpoint sender_endpoint;
 
