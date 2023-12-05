@@ -17,6 +17,5 @@ int main() {
     stun_msg[1] = 0x01;
     udp::send(stun_msg, 256);
 
-    udp::receive();
     return 0;
 }

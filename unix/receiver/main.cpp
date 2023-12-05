@@ -10,7 +10,6 @@ using std::string;
 Poco::URI uri("http://localhost:631");
 
 int main() {
-    udp::receive();
-
+    // later to implement
     return 0;
 }
